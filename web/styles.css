@@ -1,0 +1,80 @@
+:root {
+  --brand: #0b5d4b;
+  --text: #1c1c1c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: var(--text);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--brand);
+  color: #fff;
+  padding: 1rem;
+}
+
+nav a {
+  color: #fff;
+  margin-right: 1rem;
+}
+
+main {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+input,
+select,
+button {
+  font: inherit;
+  padding: 0.5rem 0.75rem;
+}
+
+.cards {
+  margin: 1rem 0;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.empty {
+  font-style: italic;
+}
+
+.error {
+  color: #a30000;
+}
+
+/* TODO (Q8.2):
+   1. Lay the .cards container out as a CSS grid: as many columns as fit, each
+      at least 16rem wide, sharing the remaining space equally, with a gap.
+   2. Keyboard users need to see which card they are in: give .card a visible
+      outline (or box-shadow) when something inside it has focus.
+   3. Add a --sold-out colour custom property to :root and use it (via var())
+      for the background of the .badge-sold-out badge.
+   4. Respect people who ask their system to reduce motion: switch the card
+      transition off inside a prefers-reduced-motion media query. */

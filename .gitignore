@@ -1,0 +1,8 @@
+target/
+dist/
+*.class
+.idea/
+*.iml
+.vscode/
+node_modules/
+.m2/

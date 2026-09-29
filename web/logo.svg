@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" width="120" height="40" role="img">
+  <rect width="120" height="40" rx="8" fill="#ffffff"/>
+  <path d="M8 22 q8 -14 16 0 t16 0 t16 0" fill="none" stroke="#0b5d4b" stroke-width="4" stroke-linecap="round"/>
+  <text x="72" y="26" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0b5d4b">Wave</text>
+</svg>

@@ -1,0 +1,16 @@
+image: maven:3.9-eclipse-temurin-17
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+
+before_script:
+  - apt-get update -qq && apt-get install -y -qq make
+
+# TODO (Q6.3): define the stages for this pipeline, add the dependency cache,
+# and add a job for each stage other than `build` below.
+# Read the README for exactly what each job must do.
+
+build:
+  stage: build
+  script:
+    - make compile

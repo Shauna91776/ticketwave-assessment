@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TicketWave - Find your next event</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- TODO (Q8.1): fix the page so it meets the requirements in the README.
+       Every requirement can be met by editing this file only. -->
+  <div class="top">
+    <img class="logo" src="logo.svg">
+    <div class="menu">
+      <a href="#events">Events</a>
+      <a href="#booking">Book</a>
+      <a href="#help">Help</a>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="search">
+      <input id="search" placeholder="Search by title or city">
+    </div>
+
+    <h2 id="events-heading">Upcoming events</h2>
+    <div id="events"></div>
+
+    <form id="booking-form">
+      <select id="event-select" name="eventId" aria-label="Event"></select>
+      <!-- TODO (Q8.1): the booking details (email and quantity) and the submit button go here -->
+    </form>
+
+    <div id="message"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
