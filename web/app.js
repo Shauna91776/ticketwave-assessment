@@ -16,25 +16,81 @@ function escapeHtml(text) {
 /**
  * Formats a price given in whole cents as rand: 12345 -> 'R123.45'.
  */
+//function formatPrice(cents) {
+//  // TODO (Q8.3)
+//  double rands= cents/100
+//  int centss = cents % 100
+//   return "R{rands} + . + {centss}"
+//   throw new Error('formatPrice is not implemented');
+//}
+
 function formatPrice(cents) {
-  // TODO (Q8.3)
-  throw new Error('formatPrice is not implemented');
+  const rands = Math.floor(cents / 100);
+  const centsPart = cents % 100;
+
+  return `R${rands}.${String(centsPart).padStart(2, '0')}`;
 }
 
 /**
  * Returns the events whose title or city contains `query`. See the README.
  */
+//function filterEvents(events, query) {
+//  // TODO (Q8.3)
+//  ArrayList freshList = new ArrayList();
+//  for (event in events.trim()){
+//  if (event.contains("query")
+//  freshList.put(event))
+//  else(if(event== null){
+//  return freshList})}
+//  }
+//  return freshList;
+//  }
+//
+//  throw new Error('filterEvents is not implemented');
+//}
+
 function filterEvents(events, query) {
-  // TODO (Q8.3)
-  throw new Error('filterEvents is not implemented');
+  const cleanedQuery = query.trim().toLowerCase();
+
+  if (cleanedQuery === '') {
+    return [...events];
+  }
+
+  return events.filter((event) =>
+    event.title.toLowerCase().includes(cleanedQuery) ||
+    event.city.toLowerCase().includes(cleanedQuery)
+  );
 }
 
 /**
  * Builds the HTML for a list of events. See the README for the exact markup.
  */
+//function renderEventCards(events) {
+//if (events==null){
+//return "<p class="empty">No events match your search.</p>"}
+//else()
+//  // TODO (Q8.3)
+//  throw new Error('renderEventCards is not implemented');
+//}
 function renderEventCards(events) {
-  // TODO (Q8.3)
-  throw new Error('renderEventCards is not implemented');
+  if (!events || events.length === 0) {
+    return '<p class="empty">No events match your search.</p>';
+  }
+
+  return `
+    <div class="cards">
+      ${events.map((event) => `
+        <article class="card" data-id="${escapeHtml(event.id)}">
+          <h3>${escapeHtml(event.title)}</h3>
+          <p class="city">${escapeHtml(event.city)}</p>
+          <p class="price">${formatPrice(event.price)}</p>
+          ${event.remaining === 0
+            ? '<span class="badge-sold-out">Sold out</span>'
+            : ''}
+        </article>
+      `).join('')}
+    </div>
+  `;
 }
 
 /**
@@ -42,11 +98,52 @@ function renderEventCards(events) {
  * injectable so the function can be tested without a network.
  * See the README for the required requests and return values.
  */
-async function submitBooking(payload, fetchFn = fetch) {
-  // TODO (Q8.3)
-  throw new Error('submitBooking is not implemented');
-}
+//async function submitBooking(payload, fetchFn = fetch) {
+//  // TODO (Q8.3)
+//  throw new Error('submitBooking is not implemented');
+//}
 
+async function submitBooking(payload, fetchFn = fetch) {
+  try {
+    const response = await fetchFn('/api/bookings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (response.status === 201) {
+      const booking = await response.json();
+      return { ok: true, booking };
+    }
+
+    if (response.status === 409) {
+      return {
+        ok: false,
+        error: 'Sorry, this event is sold out.'
+      };
+    }
+
+    if (response.status === 400) {
+      return {
+        ok: false,
+        error: 'Please check your details and try again.'
+      };
+    }
+
+    return {
+      ok: false,
+      error: 'Something went wrong. Please try again.'
+    };
+
+  } catch (err) {
+    return {
+      ok: false,
+      error: 'Network error. Check your connection and try again.'
+    };
+  }
+}
 // ---- Page wiring (provided - do not change) -------------------------------
 
 if (typeof document !== 'undefined') {

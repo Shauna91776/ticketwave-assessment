@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang = "en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,30 +9,41 @@
 <body>
   <!-- TODO (Q8.1): fix the page so it meets the requirements in the README.
        Every requirement can be met by editing this file only. -->
-  <div class="top">
-    <img class="logo" src="logo.svg">
-    <div class="menu">
+  <header>
+    <img class="logo" src="logo.svg" alt="ticketwave logo">
+    <nav aria-label="Main">
       <a href="#events">Events</a>
       <a href="#booking">Book</a>
       <a href="#help">Help</a>
-    </div>
-  </div>
+    </nav>
+  </header>
 
-  <div class="main">
+  <main>
     <div class="search">
-      <input id="search" placeholder="Search by title or city">
+      <label for="search">Search events</label>
+      <input type = "search" id="search" placeholder="Search by title or city">
+
     </div>
 
     <h2 id="events-heading">Upcoming events</h2>
-    <div id="events"></div>
+    <section id="events" aria-labelledby="events-heading"></section>
 
     <form id="booking-form">
+      <fieldset>
+        <legend>Booking details</legend>
+        <label for="email">email input </label>
+        <input id="email" name="email" type="email" required>
+        <label for = "quantity"> quantity input</label>
+        <input id="quantity" name="quantity" type="number" required min="1" max="8">
+
+      </fieldset>
+      <button type="submit">Book</button>
       <select id="event-select" name="eventId" aria-label="Event"></select>
       <!-- TODO (Q8.1): the booking details (email and quantity) and the submit button go here -->
     </form>
 
-    <div id="message"></div>
-  </div>
+    <div id="message" role="status"></div>
+  </main>
 
   <script src="app.js"></script>
 </body>

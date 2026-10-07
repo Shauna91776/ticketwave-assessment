@@ -10,4 +10,9 @@ public class StandardTicket extends Ticket {
     public double price() {
         return getBasePrice();
     }
+
+    @Override
+    public String perks() {
+        return "Lounge access, fast-track entry";
+    }
 }

@@ -112,9 +112,10 @@ DO NOT CHANGE THE FORMAT -- DO NOT CREATE A NEW txt file
 
 
 === Question 8.4 (3 marks) ===
-#(a) 1.
-#    2.
-#    3.
-#    4.
+#(a) 1.401
+#    2.403
+#    3.400 wrong 409
+#    4.404 wrong 400
 
-#(b)
+#(b) Client-side validation can be bypassed because the client is not trusted.
+ A user can modify the page or send requests directly to the API, so the server must validate every booking itself.

@@ -10,7 +10,7 @@ public class VipTicket extends Ticket {
 
     @Override
     public double price() {
-        return basePrice * MULTIPLIER;
+        return getBasePrice() * MULTIPLIER;
     }
 
     @Override

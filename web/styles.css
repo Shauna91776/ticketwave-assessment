@@ -1,4 +1,5 @@
 :root {
+  --sold-out: #888;
   --brand: #0b5d4b;
   --text: #1c1c1c;
 }
@@ -47,15 +48,35 @@ button {
 }
 
 .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1rem;
   margin: 1rem 0;
+
 }
+
+.card:focus-within {
+  outline: 2px solid #000;
+}
+
+.badge-sold-out {
+    background:var(--sold-out);
+    }
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
+
 
 .card {
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   padding: 1rem;
-  transition: transform 0.2s ease;
+
 }
+
 
 .card:hover {
   transform: translateY(-4px);
@@ -67,6 +88,10 @@ button {
 
 .error {
   color: #a30000;
+}
+
+.card:focus-within {
+    /* visible outline OR box-shadow */
 }
 
 /* TODO (Q8.2):
